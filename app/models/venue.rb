@@ -18,7 +18,7 @@ class Venue < ApplicationRecord
 
   def comments
     my_id = self.id
-    matching_comments = Comment.where({ :venue_id => my_id })
+    matching_comments = Comment.where({ :venue_id => self.id })
     return matching_comments
   end
 end

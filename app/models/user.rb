@@ -15,7 +15,7 @@ class User < ApplicationRecord
   })
 
   def comments
-    my_id = self.id
+    my_id = self.username
     matching_comments = Comment.where({ :author_id => my_id })
     return matching_comments
   end
