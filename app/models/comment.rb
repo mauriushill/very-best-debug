@@ -12,6 +12,12 @@
 
 class Comment < ApplicationRecord
   validates(:commenter, { :presence => true })
+  def my_place
+    my_id = self.venue_id
+    matching_venues = Venue.where({ :id => my_id })
+    the_venue = matching_venues.at(0)
+    return the_venue
+  end
 
   def commenter
     my_id = self.author_id

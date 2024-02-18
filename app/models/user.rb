@@ -14,9 +14,15 @@ class User < ApplicationRecord
     :uniqueness => { :case_sensitive => false },
   })
 
-  def comments
+  def my_venue
+    my_id = self.id
+    matching_venues = Comment.where({ :author_id => my_id })
+    return matching_venues
+  end
+
+  def the_comments
     my_id = self.username
-    matching_comments = Comment.where({ :author_id => my_id })
+    matching_comments = Comment.where({ :id => my_id })
     return matching_comments
   end
 

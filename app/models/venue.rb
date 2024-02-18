@@ -16,6 +16,11 @@ class Venue < ApplicationRecord
     :uniqueness => { :case_sensitive => false },
   })
 
+  def venue 
+    my_id = self.id
+    matching_venue
+  end
+  
   def comments
     my_id = self.id
     matching_comments = Comment.where({ :venue_id => self.id })
